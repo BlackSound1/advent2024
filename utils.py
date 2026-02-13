@@ -1,26 +1,44 @@
-def _is_strictly_increasing(numbers: list[int]) -> bool:
-    """Check if a list of numbers is strictly decreasing."""
-    return all(x < y for x, y in zip(numbers, numbers[1:]))
+def _is_strictly_increasing(report: list[int]) -> bool:
+    """
+    Check if a list of numbers is strictly increasing.
+
+    :param list[int] report: The report
+    :return bool: Whether the report follows the is strictly increasing
+    """
+    return all(x < y for x, y in zip(report, report[1:]))
 
 
-def _is_strictly_decreasing(numbers: list[int]) -> bool:
-    """Check if a list of numbers is strictly decreasing."""
-    return all(x > y for x, y in zip(numbers, numbers[1:]))
+def _is_strictly_decreasing(report: list[int]) -> bool:
+    """
+    Check if a list of numbers is strictly decreasing.
+
+    :param list[int] report: The report
+    :return bool: Whether the report follows the is strictly decreasing
+    """
+    return all(x > y for x, y in zip(report, report[1:]))
 
 
-def is_monotonic(numbers: list[int]) -> bool:
-    """Check if a list of numbers is monotonically increasing or decreasing."""
-    return _is_strictly_increasing(numbers) or _is_strictly_decreasing(numbers)
+def is_monotonic(report: list[int]) -> bool:
+    """
+    Check if a list of numbers is monotonically increasing or decreasing.
+
+    :param list[int] report: The report
+    :return bool: Whether the report follows the monotonicity rule
+    """
+    return _is_strictly_increasing(report) or _is_strictly_decreasing(report)
 
 
-def difference_rule(numbers: list[int]) -> bool:
+def difference_rule(report: list[int]) -> bool:
     """
     Check if a list of numbers has pairwise differences of at most 3.
 
     Don't need to check the 'at-least-1' rule because our monotonicity rule
-    doesn't allow repeated numbers
+    doesn't allow repeated numbers.
+
+    :param list[int] report: The report
+    :return bool: Whether the report follows the difference rule
     """
-    return all(abs(x - y) <= 3 for x, y in zip(numbers, numbers[1:]))
+    return all(abs(x - y) <= 3 for x, y in zip(report, report[1:]))
 
 
 def problem_dampener(report: list[int]) -> bool:
@@ -31,7 +49,7 @@ def problem_dampener(report: list[int]) -> bool:
     each with a different level removed. Check if any of these
     alt versions are now safe.
 
-    :param list[int] numbers: The report
+    :param list[int] report: The report
     :return bool: Whether the report would be safe without one level
     """
 
