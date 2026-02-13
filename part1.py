@@ -1,26 +1,4 @@
-def is_strictly_increasing(numbers: list[int]) -> bool:
-    """Check if a list of numbers is strictly decreasing."""
-    return all(x < y for x, y in zip(numbers, numbers[1:]))
-
-
-def is_strictly_decreasing(numbers: list[int]) -> bool:
-    """Check if a list of numbers is strictly decreasing."""
-    return all(x > y for x, y in zip(numbers, numbers[1:]))
-
-
-def is_monotonic(numbers: list[int]) -> bool:
-    """Check if a list of numbers is monotonically increasing or decreasing."""
-    return is_strictly_increasing(numbers) or is_strictly_decreasing(numbers)
-
-
-def difference_rule(numbers: list[int]) -> bool:
-    """
-    Check if a list of numbers has pairwise differences of at most 3.
-
-    Don't need to check the 'at-least-1' rule because our monotonicity rule
-    doesn't allow repeated numbers
-    """
-    return all(abs(x - y) <= 3 for x, y in zip(numbers, numbers[1:]))
+from utils import difference_rule, is_monotonic
 
 
 def main():
